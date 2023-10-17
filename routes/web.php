@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\auth;
+use App\Http\Controllers\BeritaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,9 @@ use Illuminate\Support\Facades\auth;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
+
 */
+Route::get('/', 'BeritaController@index')->name('berita.index');
 
 // Rute untuk mengakses daftar berita atau project
 Route::get('/berita', 'BeritaController@index')->name('berita.index');
