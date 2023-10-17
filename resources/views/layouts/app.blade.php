@@ -15,6 +15,9 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('berita.index') }}">Berita</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+        </li>
         <!-- Tambahkan navigasi lainnya di sini sesuai kebutuhan -->
     </ul>
 </nav>

@@ -3,23 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\BeritaController; // Sesuaikan dengan nama model yang telah dibuat
+use App\Models\Berita;
 use Laravel\Sail\Console\PublishCommand;
 
 class BeritaController extends Controller
 {
-    Public function index()
+    public function index()
     {
-        $berita = Berita::all(); // Mengambil semua berita dari database
-        return view('berita.index', ['beritas' => $beritas]);
+        return view('berita.index', ['berita' => Berita::all()]);
     }
-
-    Public function create()
+    public function show($id)
     {
-        return view('berita.create');
+        $berita = Berita::findOrFail($id); // Temukan berita berdasarkan ID
+        return view('berita.show', ['berita' => $berita]);
     }
-
-    Public function store(Request $request)
+    public function store(Request $request)
     {
         // Validasi data yang diterima dari form
         $validatedData = $request->validate([
@@ -33,13 +31,13 @@ class BeritaController extends Controller
         return redirect('/berita')->with('success', 'Berita berhasil ditambahkan');
     }
 
-    Public function edit($id)
+    public function edit($id)
     {
         $berita = Berita::findOrFail($id); // Temukan berita berdasarkan ID
         return view('berita.edit', ['berita' => $berita]);
     }
 
-    Public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         // Validasi data yang diterima dari form
         $validatedData = $request->validate([
@@ -53,21 +51,15 @@ class BeritaController extends Controller
         return redirect('/berita')->with('success', 'Berita berhasil diperbarui');
     }
 
-    Public function destroy($id)
+    public function delete($id)
     {
         $berita = Berita::findOrFail($id); // Temukan berita berdasarkan ID
         $berita->delete(); // Hapus berita dari database
 
         return redirect('/berita')->with('success', 'Berita berhasil dihapus');
     }
-}
-    Public function create()
-{
-    if (auth()->user()->isAdmin()) {
-        // Hanya admin yang bisa membuat berita
+    public function create()
+    {
         return view('berita.create');
-    } else {
-        // Redirect atau menampilkan pesan akses ditolak
-        return redirect('/berita')->with('error', 'Anda tidak diizinkan untuk menambah berita.');
     }
 }

@@ -7,32 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Berita extends Model
 {
-    use HasFactory;
-}
-
-namespace App;
-
-use Illuminate\Database\Eloquent\Model;
-
-class Berita extends Model
-{
+    protected $table = 'berita';
     protected $fillable = [
-        'judul', 'isi', 'tanggal_publikasi',
+        'judul', 'deskripsi',
     ];
-    public function scopeTerbaru($query)
-    {
-        return $query->orderBy('tanggal_publikasi', 'desc');
-    }
-    $berita = Berita::terbaru()->get();
-}
-
     public function komentar()
     {
         return $this->hasMany(Komentar::class);
     }
-    $komentarBerita = $berita->komentar;
-
     function setJudulAttribute($value)
-{
-    $this->attributes['judul'] = strtoupper($value);
+    {
+        $this->attributes['judul'] = strtoupper($value);
+    }
 }
