@@ -3,7 +3,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Edit Berita atau Proyek Baru</h1>
+    <h1>Edit Berita</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">

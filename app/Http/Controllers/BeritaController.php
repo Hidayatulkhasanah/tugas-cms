@@ -14,47 +14,45 @@ class BeritaController extends Controller
     }
     public function show($id)
     {
-        $berita = Berita::findOrFail($id); // Temukan berita berdasarkan ID
+        $berita = Berita::findOrFail($id);
         return view('berita.show', ['berita' => $berita]);
     }
     public function store(Request $request)
     {
-        // Validasi data yang diterima dari form
+
         $validatedData = $request->validate([
             'judul' => 'required|max:255',
             'deskripsi' => 'required',
         ]);
 
-        // Simpan berita baru ke dalam database
         Berita::create($validatedData);
-
         return redirect('/berita')->with('success', 'Berita berhasil ditambahkan');
     }
 
     public function edit($id)
     {
-        $berita = Berita::findOrFail($id); // Temukan berita berdasarkan ID
+        $berita = Berita::findOrFail($id);
         return view('berita.edit', ['berita' => $berita]);
     }
 
     public function update(Request $request, $id)
     {
-        // Validasi data yang diterima dari form
+
         $validatedData = $request->validate([
             'judul' => 'required|max:255',
             'deskripsi' => 'required',
         ]);
 
-        $berita = Berita::findOrFail($id); // Temukan berita berdasarkan ID
-        $berita->update($validatedData); // Perbarui berita
+        $berita = Berita::findOrFail($id);
+        $berita->update($validatedData);
 
         return redirect('/berita')->with('success', 'Berita berhasil diperbarui');
     }
 
     public function delete($id)
     {
-        $berita = Berita::findOrFail($id); // Temukan berita berdasarkan ID
-        $berita->delete(); // Hapus berita dari database
+        $berita = Berita::findOrFail($id);
+        $berita->delete();
 
         return redirect('/berita')->with('success', 'Berita berhasil dihapus');
     }
