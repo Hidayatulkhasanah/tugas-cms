@@ -20,15 +20,17 @@
         @if (isset($berita))
             @method('PUT')
         @endif
-        <div class="form-group">
-            <label for="judul">Judul</label>
-            <input type="text" name="judul" class="form-control" id="judul" placeholder="Judul"
-                value="{{ $berita->judul }}">
+        <form>
+            <div class="mb-3">
+                <label for="judul" class="form-label">Judul</label>
+                <input type="judul" class="form-control" id="judul" aria-describedby="Judul" value="{{ $berita->judul }}">
+            </div>
+            <div class="form-group">
+                <label for="deskripsi">Deskripsi</label>
+                <textarea name="deskripsi" class="form-control" id="deskripsi" rows="3">{{ $berita->deskripsi }}</textarea>
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Simpan</button>
+            <button type="submit" class="btn btn-outline-success"><a href="{{ route('berita.index') }}"></a>Kembali</button>
+            </div>
+        </form>
         </div>
-        <div class="form-group">
-            <label for="deskripsi">Deskripsi</label>
-            <textarea name="deskripsi" class="form-control" id="deskripsi" rows="3">{{ $berita->deskripsi }}</textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Simpan</button>
-    </form>
-    </div>

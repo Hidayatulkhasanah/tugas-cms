@@ -25,6 +25,8 @@
             <label for="deskripsi">Deskripsi</label>
             <textarea name="deskripsi" class="form-control" id="deskripsi" rows="3"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        <button type="submit" class="btn btn-outline-primary">Simpan</button>
+        <button type="submit" class="btn btn-outline-success"><a href="{{ route('berita.index') }}"></a>Kembali</button>
+        </div>
     </form>
-</div>
+    </div>

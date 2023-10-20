@@ -23,20 +23,27 @@
 </nav>
 
 @section('content')
-    <h3>Daftar Berita</h3>
-    <ul>
-        @foreach ($berita as $berita)
-            <li>
-                <a href="{{ route('berita.show', $berita->id) }}">{{ $berita->judul }}</a>
-            </li>
+    <div class="container">
+        <h3>Daftar Berita</h3>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a href="{{ route('berita.create') }}" button type="button" class="btn btn-primary" enable>Tambah</button>
             </a>
-            <a href="{{ route('berita.edit', $berita->id) }}" button type="button" class="btn btn-primary"
-                enable>Edit</button>
-            </a>
-            <a href="{{ route('berita.delete', $berita->id) }}"button type="button" class="btn btn-primary"
-                enable>Hapus</button>
-            </a>
+        </div>
+
+        @foreach ($berita as $berita)
+            <div class="card" style="width: 18rem;">
+                <img src="" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text"><a href="{{ route('berita.show', $berita->id) }}">{{ $berita->judul }}</a></p>
+                    <p>{{ $berita->deskripsi }}</p>
+                </div>
+                <a href="{{ route('berita.edit', $berita->id) }}" button type="button" class="btn btn-warning mb-2"
+                    enable>Edit</button>
+                </a>
+                <a href="{{ route('berita.delete', $berita->id) }}"button type="button" class="btn btn-danger"
+                    enable>Hapus</button>
+                </a>
+            </div>
         @endforeach
-    </ul>
+    </div>
 @endsection
