@@ -23,7 +23,7 @@
         <form>
             <div class="mb-3">
                 <label for="judul" class="form-label">Judul</label>
-                <input type="judul" class="form-control" id="judul" aria-describedby="Judul" value="{{ $berita->judul }}">
+                <input type="judul" name="judul" class="form-control" id="judul" aria-describedby="Judul" value="{{ $berita->judul }}">
             </div>
             <div class="form-group">
                 <label for="deskripsi">Deskripsi</label>
